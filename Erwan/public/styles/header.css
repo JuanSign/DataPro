@@ -1,0 +1,216 @@
+/* styles/header.css */
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2c3e50;
+    --text-dark: #2c3e50;
+    --text-light: #95a5a6;
+    --background-light: #f5f9ff;
+    --white: #ffffff;
+    --danger: #e74c3c;
+    --danger-dark: #c0392b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 12px rgba(52, 152, 219, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid var(--background-light);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    width: auto;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.welcome-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.username {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+}
+
+.btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-login:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.btn-register {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-register:hover {
+    background-color: var(--background-light);
+    transform: translateY(-1px);
+}
+
+.btn-logout {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.2);
+}
+
+@media (max-width: 1200px) {
+    .nav-menu {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .header-right {
+        margin-top: 1rem;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .welcome-text {
+        font-size: 1rem;
+    }
+
+    .username {
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+}
+
+/* styles/footer.css */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.author {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
