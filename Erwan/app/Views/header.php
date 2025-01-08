@@ -33,8 +33,8 @@
         </div>
         <div class="header-right">
             <nav class="nav-menu">
-            <a href="/" class="nav-link">Home</a>
-                    <a href="/about" class="nav-link">Data Processor</a>
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/data_processor" class="nav-link">Data Processor</a>
                     <a href="/coba" class="nav-link">Coba</a>
                     <a href="/cobaAPI" class="nav-link">Coba API</a>
             </nav>
