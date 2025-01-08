@@ -11,12 +11,11 @@ class Login extends Model
                         AND password = "'.$password.'"';
         $query = $db->query($queryString);
         $results = $query->getResult();
-        
-        // Check if user is found, and return name if found
+
         if (count($results) == 1) {
             return $results[0]->name;
         }
         
-        return null;  // Return null if no user found
+        return null;
     }
 }

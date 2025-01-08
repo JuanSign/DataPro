@@ -14,21 +14,18 @@ class UserModel extends Model
     {
         // Hash password inputan pengguna dengan md5
         $hashedPassword = md5($password);
-    
-        // Cari user berdasarkan username dan name
         $user = $this->where('username', $username)
                      ->where('name', $name)
                      ->first();
     
-        // Debugging: Periksa apakah data pengguna ditemukan
-        var_dump($user); exit();  // Cek output di browser
+        // // Debugging: Periksa apakah data pengguna ditemukan
+        // var_dump($user); exit(); 
     
-        // Jika user ditemukan dan password valid
         if ($user && $user['password'] === $hashedPassword) {
-            return $user;  // Kembalikan data user jika password valid
+            return $user;
         }
     
-        return null;  // Return null jika user tidak ditemukan atau password salah
+        return null;
     }
     
 }

@@ -12,13 +12,13 @@ class LoginController extends BaseController
         $model = model(Login::class);
         $username = $this->request->getPost('username');
         $password = md5($this->request->getPost('password'));
-        $name = $model->getDataUsers($username, $password);  // Get the name from the database
+        $name = $model->getDataUsers($username, $password);
     
         if ($name !== null) {
-            session()->set('num_user', 1); // Set session for user
-            session()->set('username', $username); // Set username in session
-            session()->set('name', $name); // Set the correct name from DB
-            session()->set('isLoggedIn', true); // Set session isLoggedIn
+            session()->set('num_user', 1); 
+            session()->set('username', $username);
+            session()->set('name', $name); 
+            session()->set('isLoggedIn', true);
             return redirect()->to('/');
         } else {
             return redirect()->to('/authentication');
@@ -28,6 +28,6 @@ class LoginController extends BaseController
     public function logout() 
     {
         session()->destroy();
-        return redirect()->to('/authentication');
+        return redirect()->to('/');
     }
 }

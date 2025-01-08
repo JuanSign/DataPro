@@ -99,8 +99,8 @@ class ContentSecurityPolicy extends BaseConfig
      *
      * @var list<string>|string
      */
-    public $fontSrc;
-
+    public $fontSrc = ['self', 'https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
+    
     /**
      * Lists valid endpoints for submission from `<form>` tags.
      *

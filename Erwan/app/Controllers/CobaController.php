@@ -7,6 +7,9 @@ class CobaController extends BaseController
     // Menampilkan semua data
     public function index()
     {
+        if (session()->get('num_user') == '') {
+            return redirect()->to('/authentication');
+        }
         $model = model(Coba::class);
         $data['coba'] = $model->getAllDataCoba();
         return view('header', $data).view('coba').view('footer');
@@ -15,6 +18,9 @@ class CobaController extends BaseController
     // API untuk mendapatkan semua data
     public function indexAPI()
     {
+        if (session()->get('num_user') == '') {
+            return redirect()->to('/authentication');
+        }
         $model = model(Coba::class);
         $data['coba'] = $model->getAllDataCoba();
         return $this->response->setJSON($data, 200);
@@ -58,6 +64,9 @@ class CobaController extends BaseController
     // View data berdasarkan value (web view)
     public function viewAPI($value)
     {
+        if (session()->get('num_user') == '') {
+            return redirect()->to('/authentication');
+        }
         $model = model(Coba::class);
         $data['coba'] = $model->getDataCoba($value);
         return view('header', $data).view('coba').view('footer');
