@@ -1,171 +1,230 @@
 // public/js/data_processor.js
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('processorForm');
-    const fileInput = document.getElementById('dataFile');
-    const uploadSection = document.getElementById('uploadSection');
-    const previewSection = document.getElementById('previewSection');
-    const fileName = document.getElementById('fileName');
-    const previewTable = document.getElementById('previewTable');
-    const submitBtn = document.getElementById('submitBtn');
-    const predictiveRadio = document.getElementById('predictive');
-    const modelOptions = document.getElementById('modelOptions');
-    const analysisError = document.getElementById('analysisError');
-    const customEmailRadio = document.getElementById('custom');
-    const customEmailInput = document.getElementById('customEmailInput');
 
-    // Handle file selection
-    fileInput.addEventListener('change', handleFileUpload);
+class DataProcessor {
+    constructor() {
+        this.initializeElements();
+        this.initializeEventListeners();
+        this.fileTypes = {
+            'csv': 'text/csv',
+            'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'xls': 'application/vnd.ms-excel'
+        };
+    }
 
-    // Handle drag and drop
-    const uploadBox = document.querySelector('.upload-box');
-    uploadBox.addEventListener('dragover', (e) => {
+    initializeElements() {
+        // Form elements
+        this.form = document.querySelector('form');
+        this.fileInput = document.getElementById('dataFile');
+        this.submitBtn = document.querySelector('.btn-submit');
+        
+        // Sections
+        this.uploadSection = document.getElementById('uploadSection');
+        this.previewSection = document.getElementById('previewSection');
+        this.uploadBox = document.querySelector('.upload-box');
+        
+        // Analysis options
+        this.predictiveRadio = document.getElementById('predictive');
+        this.modelOptions = document.getElementById('modelOptions');
+        this.analysisError = document.getElementById('analysisError');
+        
+        // Email options
+        this.registeredRadio = document.getElementById('registered');
+        this.customRadio = document.getElementById('custom');
+        this.customEmailInput = document.getElementById('customEmailInput');
+        
+        // Preview elements
+        this.fileNameElement = document.getElementById('fileName');
+        this.previewTable = document.querySelector('.preview-table');
+    }
+
+    initializeEventListeners() {
+        // File handling
+        this.fileInput.addEventListener('change', this.handleFileUpload.bind(this));
+        
+        // Drag and drop
+        this.uploadBox.addEventListener('dragover', this.handleDragOver.bind(this));
+        this.uploadBox.addEventListener('dragleave', this.handleDragLeave.bind(this));
+        this.uploadBox.addEventListener('drop', this.handleDrop.bind(this));
+        
+        // Analysis type
+        this.predictiveRadio.addEventListener('change', () => {
+            this.toggleModelOptions();
+            this.validateForm();
+        });
+        
+        // Email choice
+        this.customRadio.addEventListener('change', () => {
+            this.toggleCustomEmail();
+            this.validateForm();
+        });
+        
+        // Form submission
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        
+        // Reset button
+        const resetBtn = document.querySelector('.btn-change');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', this.resetUpload.bind(this));
+        }
+    }
+
+    handleDragOver(e) {
         e.preventDefault();
-        uploadBox.style.borderColor = '#2196f3';
-    });
+        this.uploadBox.style.borderColor = '#3498db';
+    }
 
-    uploadBox.addEventListener('dragleave', (e) => {
+    handleDragLeave(e) {
         e.preventDefault();
-        uploadBox.style.borderColor = '#ddd';
-    });
+        this.uploadBox.style.borderColor = '#ddd';
+    }
 
-    uploadBox.addEventListener('drop', (e) => {
+    handleDrop(e) {
         e.preventDefault();
-        uploadBox.style.borderColor = '#ddd';
+        this.uploadBox.style.borderColor = '#ddd';
+        
         const files = e.dataTransfer.files;
         if (files.length) {
-            fileInput.files = files;
-            handleFileUpload({ target: fileInput });
+            this.fileInput.files = files;
+            this.handleFileUpload({ target: this.fileInput });
         }
-    });
+    }
 
-    // Handle analysis type selection
-    predictiveRadio.addEventListener('change', () => {
-        modelOptions.classList.toggle('hidden', !predictiveRadio.checked);
-        validateForm();
-    });
+    isValidFileType(file) {
+        const extension = file.name.split('.').pop().toLowerCase();
+        return (
+            Object.values(this.fileTypes).includes(file.type) ||
+            ['csv', 'xlsx', 'xls'].includes(extension)
+        );
+    }
 
-    // Handle email choice
-    customEmailRadio.addEventListener('change', () => {
-        customEmailInput.classList.toggle('hidden', !customEmailRadio.checked);
-        validateForm();
-    });
-
-    // Form submission
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!validateForm()) {
-            return;
-        }
-        // Here you would typically send the data to your server
-        console.log('Form submitted successfully');
-    });
-
-    function handleFileUpload(event) {
+    async handleFileUpload(event) {
         const file = event.target.files[0];
         if (!file) return;
 
-        // Validate file type
-        const validTypes = [
-            'application/vnd.ms-excel',
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'text/csv'
-        ];
-        
-        if (!validTypes.includes(file.type) && 
-            !file.name.endsWith('.csv') && 
-            !file.name.endsWith('.xlsx') && 
-            !file.name.endsWith('.xls')) {
+        if (!this.isValidFileType(file)) {
             alert('Please upload a valid CSV or Excel file');
             return;
         }
 
         // Update UI
-        fileName.textContent = file.name;
-        uploadSection.classList.add('hidden');
-        previewSection.classList.remove('hidden');
+        this.fileNameElement.textContent = file.name;
+        this.uploadSection.classList.add('hidden');
+        this.previewSection.classList.remove('hidden');
 
-        // Read and preview file
-        if (file.name.endsWith('.csv')) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const text = e.target.result;
-                displayCSVPreview(text);
-            };
-            reader.readAsText(file);
-        } else {
-            // For Excel files, you would typically send to server
-            // Here we'll just show a placeholder message
-            previewTable.innerHTML = '<tr><td>Excel preview will be processed server-side</td></tr>';
+        try {
+            if (file.name.toLowerCase().endsWith('.csv')) {
+                const text = await this.readFileAsText(file);
+                this.displayCSVPreview(text);
+            } else {
+                // Excel preview placeholder
+                this.previewTable.innerHTML = '<div class="p-4 text-gray-600">Excel preview will be processed server-side</div>';
+            }
+        } catch (error) {
+            console.error('Error processing file:', error);
+            alert('Error processing file. Please try again.');
+            this.resetUpload();
         }
 
-        validateForm();
+        this.validateForm();
     }
 
-    function displayCSVPreview(csv) {
-        const rows = csv.split('\n');
+    readFileAsText(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = (e) => reject(e);
+            reader.readAsText(file);
+        });
+    }
+
+    displayCSVPreview(csv) {
+        const rows = csv.split('\n').filter(row => row.trim());
         if (rows.length === 0) return;
 
-        const headers = rows[0].split(',');
-        let html = '<thead><tr>';
-        headers.forEach(header => {
-            html += `<th>${header.trim()}</th>`;
-        });
-        html += '</tr></thead><tbody>';
-
-        // Show first 5 rows
-        const previewRows = rows.slice(1, 6);
-        previewRows.forEach(row => {
-            html += '<tr>';
-            row.split(',').forEach(cell => {
-                html += `<td>${cell.trim()}</td>`;
-            });
-            html += '</tr>';
-        });
-        html += '</tbody>';
-
-        previewTable.innerHTML = html;
+        const headers = rows[0].split(',').map(header => header.trim());
+        let tableHTML = this.generateTableHeader(headers);
+        tableHTML += this.generateTableBody(rows.slice(1, 6), headers.length);
+        
+        this.previewTable.innerHTML = tableHTML;
 
         // Check for 'label' column if predictive modeling is selected
         const hasLabelColumn = headers.some(header => 
-            header.trim().toLowerCase() === 'label'
+            header.toLowerCase() === 'label'
         );
-        analysisError.classList.toggle('hidden', hasLabelColumn || !predictiveRadio.checked);
-        validateForm();
+        this.analysisError.classList.toggle('hidden', hasLabelColumn || !this.predictiveRadio.checked);
+        this.validateForm();
     }
 
-    function resetUpload() {
-        fileInput.value = '';
-        uploadSection.classList.remove('hidden');
-        previewSection.classList.add('hidden');
-        validateForm();
+    generateTableHeader(headers) {
+        return `
+            <table class="w-full">
+                <thead>
+                    <tr>
+                        ${headers.map(header => `<th class="p-2 border text-left">${header}</th>`).join('')}
+                    </tr>
+                </thead>`;
     }
 
-    function validateForm() {
-        const file = fileInput.files[0];
+    generateTableBody(rows, columnCount) {
+        return `
+                <tbody>
+                    ${rows.map(row => `
+                        <tr>
+                            ${row.split(',', columnCount)
+                                .map(cell => `<td class="p-2 border">${cell.trim()}</td>`)
+                                .join('')}
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>`;
+    }
+
+    toggleModelOptions() {
+        this.modelOptions.classList.toggle('hidden', !this.predictiveRadio.checked);
+    }
+
+    toggleCustomEmail() {
+        this.customEmailInput.classList.toggle('hidden', !this.customRadio.checked);
+    }
+
+    resetUpload() {
+        this.fileInput.value = '';
+        this.uploadSection.classList.remove('hidden');
+        this.previewSection.classList.add('hidden');
+        this.validateForm();
+    }
+
+    validateForm() {
+        const file = this.fileInput.files[0];
         const analysisType = document.querySelector('input[name="analysisType"]:checked');
         const modelType = document.querySelector('input[name="modelType"]:checked');
-        const emailChoice = document.querySelector('input[name="emailChoice"]:checked');
         const customEmail = document.getElementById('customEmail');
 
-        let isValid = true;
+        const conditions = {
+            hasFile: !!file,
+            hasAnalysisType: !!analysisType,
+            validModelType: !this.predictiveRadio.checked || (this.predictiveRadio.checked && modelType),
+            validEmail: !this.customRadio.checked || (this.customRadio.checked && customEmail?.value)
+        };
 
-        // Check if file is uploaded
-        if (!file) isValid = false;
-
-        // Check if analysis type is selected
-        if (!analysisType) isValid = false;
-
-        // If predictive is selected, check if model type is selected
-        if (predictiveRadio.checked) {
-            if (!modelType) isValid = false;
-        }
-        // Check if email choice is selected and valid if custom email is chosen
-        if (emailChoice.value === 'custom' && !customEmail.value) {
-            isValid = false;
-        }
-
-        // Enable or disable the submit button based on form validity
-        submitBtn.disabled = !isValid;
+        const isValid = Object.values(conditions).every(condition => condition);
+        this.submitBtn.disabled = !isValid;
         return isValid;
     }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        if (!this.validateForm()) return;
+
+        // Here you would typically send the data to your server
+        const formData = new FormData(this.form);
+        console.log('Form submitted successfully', Object.fromEntries(formData));
+        
+        // TODO: Add your form submission logic here
+    }
+}
+
+// Initialize the processor when the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new DataProcessor();
 });

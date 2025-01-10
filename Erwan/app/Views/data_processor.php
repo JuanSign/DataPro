@@ -118,6 +118,6 @@
         </form>
     </div>
 
-    <script src="<?= base_url('/js/data_processor.js') ?>"></script>
+    <script src="<?= base_url('/data_processor.js') ?>"></script>
 </body>
 </html>

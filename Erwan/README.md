@@ -1,60 +1,145 @@
-# CodeIgniter 4 Framework
+# DataPro
 
-## What is CodeIgniter?
+DataPro adalah aplikasi berbasis web yang dibangun menggunakan PHP dengan framework CodeIgniter 4. Aplikasi ini dirancang untuk memproses dataset, melakukan analisis statistik, pemodelan Machine Learning, serta menyediakan visualisasi data yang terintegrasi.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Fitur Utama
+- **Pengunggahan Dataset:** Mendukung pengunggahan dataset dalam berbagai format.
+- **Proses ETL:** Membersihkan dan mempersiapkan data untuk analisis.
+- **Visualisasi Data:** Menyediakan visualisasi interaktif untuk membantu memahami pola data.
+- **Model Machine Learning:** Melatih dan mengevaluasi model dengan dataset pengguna.
+- **Notifikasi Email:** Memberikan laporan hasil analisis melalui email.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Prasyarat
+Sebelum menjalankan DataPro, pastikan Anda telah menginstal perangkat berikut:
 
-## Important Change with index.php
+1. **PHP** (minimal versi 7.4)
+3. **XAMPP** atau server lain dengan Apache dan MySQL aktif
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+---
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Cara Instalasi
 
-**Please** read the user guide for a better explanation of how CI4 works!
+1. Clone repository ini:
+   ```bash
+   git clone https://github.com/username/DataPro.git
+   cd DataPro
+   ```
 
-## Repository Management
+2. Install semua dependensi dengan Composer:
+   ```bash
+   composer install
+   ```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+3. Konfigurasi file `.env`:
+   - Salin file `.env.example` menjadi `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Buka file `.env` dan sesuaikan konfigurasi database:
+     ```env
+     database.default.hostname = localhost
+     database.default.database = datapro_db
+     database.default.username = root
+     database.default.password = 
+     database.default.DBDriver = MySQLi
+     ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+4. Jalankan migrasi database:
+   ```bash
+   php spark migrate
+   ```
 
-## Contributing
+5. Jalankan server menggunakan `php spark`:
+   ```bash
+   php spark serve
+   ```
+   Secara default, aplikasi akan tersedia di [http://localhost:8080](http://localhost:8080).
 
-We welcome contributions from the community.
+6. Pastikan XAMPP Apache dan MySQL aktif.
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+---
 
-## Server Requirements
+## Panduan Penggunaan
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+1. **Mengunggah Dataset:**
+   - Akses halaman "Upload Dataset" melalui menu utama.
+   - Pilih file dataset yang ingin diunggah.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+2. **Proses ETL:**
+   - Setelah dataset diunggah, klik tombol "Process Dataset" untuk membersihkan data.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+3. **Analisis Data:**
+   - Pilih jenis analisis yang diinginkan, seperti visualisasi data atau pelatihan model.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+4. **Laporan dan Notifikasi:**
+   - Hasil analisis dapat diterima melalui email yang telah dikonfigurasi.
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+---
+
+## Struktur Direktori
+
+```
+DataPro/
+|-- app/                 # Folder utama untuk aplikasi CodeIgniter
+|-- public/              # Folder publik untuk file yang diakses langsung
+|-- writable/            # Folder untuk file sementara (log, cache, dll.)
+|-- .env                 # Konfigurasi lingkungan
+|-- composer.json        # Konfigurasi Composer
+|-- spark                # CLI untuk CodeIgniter
+```
+
+---
+
+## Troubleshooting
+
+1. **Error: Database tidak ditemukan**
+   - Pastikan database dengan nama `datapro_db` telah dibuat di MySQL.
+   - Jalankan kembali perintah migrasi: `php spark migrate`.
+
+2. **Server tidak berjalan di localhost:8080**
+   - Pastikan XAMPP Apache aktif.
+   - Periksa apakah port 8080 sedang digunakan oleh aplikasi lain, atau jalankan server di port lain:
+     ```bash
+     php spark serve --port=8000
+     ```
+
+3. **Email tidak terkirim**
+   - Pastikan konfigurasi email di file `.env` benar:
+     ```env
+     email.SMTPHost = smtp.gmail.com
+     email.SMTPUser = your_email@gmail.com
+     email.SMTPPass = your_password
+     email.SMTPPort = 587
+     ```
+
+---
+
+## Kontribusi
+
+1. Fork repository ini.
+2. Buat branch baru untuk fitur atau perbaikan Anda:
+   ```bash
+   git checkout -b fitur-baru
+   ```
+3. Commit perubahan Anda:
+   ```bash
+   git commit -m "Menambahkan fitur baru"
+   ```
+4. Push ke branch Anda:
+   ```bash
+   git push origin fitur-baru
+   ```
+5. Ajukan Pull Request.
+
+---
+
+## Lisensi
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+---
+
+Terima kasih telah menggunakan DataPro!
