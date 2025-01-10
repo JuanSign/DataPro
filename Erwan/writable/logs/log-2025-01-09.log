@@ -1,0 +1,460 @@
+INFO - 2025-01-09 14:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 14:49:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Login.php(12): CodeIgniter\Database\BaseConnection->query('SELECT name FRO...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\LoginController.php(15): App\Models\Login->getDataUsers('erwanph', '37fb1bc55667a46...')
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\LoginController->login_action()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Login.php(12): CodeIgniter\Database\BaseConnection->query('SELECT name FRO...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\LoginController.php(15): App\Models\Login->getDataUsers('erwanph', '37fb1bc55667a46...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\LoginController->login_action()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 14:49:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: POST, Route: login_action]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Login.php(12): CodeIgniter\Database\BaseConnection->query('SELECT name FROM user WHERE 
+                        username = "erwanph" 
+                        AND password = "37fb1bc55667a469ea7a27ede3f7b50a"')
+ 3 APPPATH\Controllers\LoginController.php(15): App\Models\Login->getDataUsers('erwanph', '37fb1bc55667a469ea7a27ede3f7b50a')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login_action()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 14:49:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:49:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:50:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:52:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:52:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:52:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:53:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 14:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:00:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:00:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:04:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:05:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:06:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:06:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:08:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:08:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:11:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:12:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:13:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:02 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: coba]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:04 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: coba]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:06 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: coba]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:08 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: cobaAPI]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:11 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: cobaAPI]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(25): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->indexAPI()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-01-09 15:15:13 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'foodmart', 3306, '', 0)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#3 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\app\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+#4 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(933): App\Controllers\CobaController->index()
+#5 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+#6 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#8 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\Documents\Kuliah\Arsip Sem-5 ITB\TST\DataPro\Erwan\system\rewrite.php(44): require_once('C:\\Documents\\Ku...')
+#11 {main}
+CRITICAL - 2025-01-09 15:15:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: coba]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\Coba.php(29): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `coba`')
+ 3 APPPATH\Controllers\CobaController.php(14): App\Models\Coba->getAllDataCoba()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CobaController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CobaController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Documents\\Kuliah\\Arsip Sem-5 ITB\\TST\\DataPro\\Erwan\\public\\index.php')
+INFO - 2025-01-09 15:15:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:15:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:17:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:23:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:23:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:29:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:30:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:31:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:31:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:32:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:34:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:47:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:52:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:52:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:54:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:58:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 15:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:05:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:07:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:09:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-09 16:09:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -17,7 +17,6 @@
                     <a href="/" class="nav-link">Home</a>
                     <a href="/data_processor" class="nav-link">Data Processor</a>
                     <a href="/coba" class="nav-link">Coba</a>
-                    <a href="/cobaAPI" class="nav-link">Coba API</a>
             </nav>
             <button class="btn btn-logout" onclick="window.location.href='/logout'">Logout</button>
         </div>
@@ -36,7 +35,6 @@
                     <a href="/" class="nav-link">Home</a>
                     <a href="/data_processor" class="nav-link">Data Processor</a>
                     <a href="/coba" class="nav-link">Coba</a>
-                    <a href="/cobaAPI" class="nav-link">Coba API</a>
             </nav>
             <button class="btn btn-login" onclick="window.location.href='/authentication'">Login</button>
             <button class="btn btn-register" onclick="window.location.href='/authentication'">Register</button>

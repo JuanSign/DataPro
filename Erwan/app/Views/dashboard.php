@@ -34,6 +34,11 @@
             gap: 3vh;
         }
 
+        .dataprogif {
+            max-width: 50%;
+            height: auto;
+        }
+
         .description {
             font-size: 1.2rem;
             color: #666;
@@ -107,18 +112,22 @@
 <body>
     <main class="main-content">
         <div class="left-section">
+            <!-- <video class="dataprogif" autoplay loop muted style="max-width: 100%; height: auto;">
+                <source src="dataprogif.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> -->
             <h1 style="font-size: 2.5rem; color: #333;">DataPro</h1>
             <p class="description">
                 "Simplify Your Data Journey – From Analysis to Modeling"
             </p>
-            <a href="/coba" class="cta-button">Start Processing</a>
+            <a href="/data_processor" class="cta-button">Start Processing</a>
         </div>
 
         <div class="right-section">
             <div class="feature-card">
                 <i class="fas fa-upload"></i>
                 <h3>Input Data</h3>
-                <p>Upload dataset in CSV, Excel, or JSON format</p>
+                <p>Upload dataset in CSV or Excel format</p>
             </div>
 
             <div class="feature-card">
@@ -130,7 +139,7 @@
             <div class="feature-card">
                 <i class="fas fa-chart-bar"></i>
                 <h3>Statistical Analysis</h3>
-                <p>Comprehensive statistics and testing</p>
+                <p>Comprehensive statistics result</p>
             </div>
 
             <div class="feature-card">
@@ -147,8 +156,8 @@
 
             <div class="feature-card">
                 <i class="fas fa-envelope"></i>
-                <h3>Email Reports</h3>
-                <p>Detailed reports with visualizations</p>
+                <h3>Email Report</h3>
+                <p>Detailed report through your email</p>
             </div>
         </div>
     </main>
