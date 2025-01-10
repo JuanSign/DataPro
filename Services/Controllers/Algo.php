@@ -57,7 +57,7 @@ class Algo
             $pythonScript = __DIR__ . '/../Algorithms/stats.py';
 
             $basename = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);
-            $command = escapeshellcmd("python $pythonScript " . escapeshellarg($filePath) . ' ' . escapeshellarg($basename));
+            $command = escapeshellcmd("venv/bin/python3 $pythonScript " . escapeshellarg($filePath) . ' ' . escapeshellarg($basename));
 
             $output = shell_exec($command);
 
