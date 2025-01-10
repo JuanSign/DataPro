@@ -1,8 +1,9 @@
 <?php
 
-header('Content-Type: application/json');
+require_once('Utils/Response.php');
 
 switch ($_SERVER['REQUEST_URI']) {
+
     case '/login':
         require_once('Controllers/Login.php');
         Login::HandleLogin();
@@ -11,16 +12,13 @@ switch ($_SERVER['REQUEST_URI']) {
         require_once('Controllers/Register.php');
         Register::HandleRegistration();
         break;
-    case '/verification':
-        require_once('Controllers/Verification.php');
-        Verification::HandleVerification();
+
+    case '/algo':
+        require_once('Controllers/Algo.php');
+        Algo::HandleAlgo();
         break;
 
     default:
-        http_response_code(404);
-        echo json_encode([
-            'status' => 'ERROR',
-            'message' => 'Page not found.'
-        ]);
+        Response::NOT_FOUND();
         break;
 }

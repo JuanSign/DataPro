@@ -11,7 +11,7 @@ class Token
         $this->_SECRET = $env['SECRET_KEY'];
     }
 
-    public static function Generate(string $ID)
+    public static function Generate(array $payload): string
     {
         if (self::$_instance === null) self::$_instance = new Token();
 
@@ -21,11 +21,8 @@ class Token
         ]);
 
         $expirationTime = time() + 3600;
-
-        $payload = json_encode([
-            'sub' => $ID,
-            'exp' => $expirationTime
-        ]);
+        $payload['exp'] = $expirationTime;
+        $payload = json_encode($payload);
 
         $base64UrlHeader = Token::base64UrlEncode($header);
         $base64UrlPayload = Token::base64UrlEncode($payload);
@@ -38,51 +35,27 @@ class Token
         return $jwt;
     }
 
-    public static function Verify($token)
+    public static function Verify($token): array
     {
         if (self::$_instance === null) self::$_instance = new Token();
 
-        list($base64UrlHeader, $base64UrlPayload, $base64UrlSignature) = explode('.', $token);
+        $token_parts = explode('.', $token);
+        if (count($token_parts) != 3) return ['STATUS' => 'ERROR', 'MESSAGE' => 'INVALID TOKEN!'];
+        list($base64UrlHeader, $base64UrlPayload, $base64UrlSignature) = $token_parts;
 
         $header = json_decode(Token::base64UrlDecode($base64UrlHeader), true);
         $payload = json_decode(Token::base64UrlDecode($base64UrlPayload), true);
 
-        if ($header['alg'] !== 'HS256') {
-            http_response_code(401);
-            echo json_encode([
-                'status' => 'ERROR',
-                'message' => 'Invalid Token.'
-            ]);
-            return;
-        }
+        if ($header['alg'] !== 'HS256') return ['STATUS' => 'ERROR', 'MESSAGE' => 'INVALID TOKEN!'];
 
         $signature = hash_hmac('sha256', $base64UrlHeader . '.' . $base64UrlPayload, self::$_instance->_SECRET, true);
         $base64UrlSignatureCheck = Token::base64UrlEncode($signature);
 
-        if ($base64UrlSignature !== $base64UrlSignatureCheck) {
-            http_response_code(401);
-            echo json_encode([
-                'status' => 'ERROR',
-                'message' => 'Invalid Token.'
-            ]);
-            return;
-        }
+        if ($base64UrlSignature !== $base64UrlSignatureCheck) return ['STATUS' => 'ERROR', 'MESSAGE' => 'INVALID TOKEN!'];
+        if (isset($payload['exp']) && time() > $payload['exp']) return ['STATUS' => 'ERROR', 'MESSAGE' => 'TOKEN EXPIRED!'];
 
-        if (isset($payload['exp']) && time() > $payload['exp']) {
-            http_response_code(401);
-            echo json_encode([
-                'status' => 'ERROR',
-                'message' => 'Token expired.'
-            ]);
-            return;
-        }
-
-        http_response_code(200);
-        echo json_encode([
-            'status' => 'SUCCESS',
-            'message' => 'User allowed.',
-            'ID' => $payload['sub']
-        ]);
+        $payload['STATUS'] = 'SUCCESS';
+        return $payload;
     }
 
     private static function base64UrlDecode($data)
