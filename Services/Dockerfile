@@ -1,7 +1,7 @@
 # Use an official PHP image as the base image
 FROM php:8.2-cli
 
-# Install system dependencies and Python
+# Install system dependencies, Python, and PHP extensions (including mysqli)
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libpng-dev \
+    libmysqlclient-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd mysqli
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
