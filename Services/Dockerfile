@@ -1,7 +1,7 @@
 # Use an official PHP image as the base image
-FROM php:8.2-cli
+FROM php:8.1-cli
 
-# Install system dependencies, Python, and PHP extensions (including mysqli)
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libpng-dev \
     libmysqlclient-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd mysqli
 
