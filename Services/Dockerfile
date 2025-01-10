@@ -1,5 +1,5 @@
 # Use an official PHP image as the base image
-FROM php:8.1-cli
+FROM php:8.2-cli
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -9,11 +9,13 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libpng-dev \
-    libmysqlclient-dev \
+    default-libmysqlclient-dev \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd mysqli
+    && rm -rf /var/lib/apt/lists/*
+
+# Install and configure PHP extensions separately
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd mysqli
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html

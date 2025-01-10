@@ -19,11 +19,15 @@ class Login
         if (!Login::ValidateRequest($REQUEST_BODY)) return;
 
         $credentials = UserModel::GetUser($REQUEST_BODY['identifier']);
-        if ($credentials['ID'] === null) Response::NOT_FOUND('USER');
+        if ($credentials['ID'] === null) {
+            Response::NOT_FOUND('USER');
+            return;
+        }
 
-        if (!password_verify($REQUEST_BODY['password'], $credentials['password']))
+        if (!password_verify($REQUEST_BODY['password'], $credentials['password'])) {
             Response::AUTHENTICATION_ERROR('WRONG PASSWORD');
-        else {
+            return;
+        } else {
             unset($credentials['password']);
             $data['STATUS'] = 'SUCCESS';
             $data['MESSAGE'] = 'Logged in.';
