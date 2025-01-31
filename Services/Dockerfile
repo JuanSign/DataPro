@@ -19,22 +19,20 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN useradd -ms /bin/bash appuser
 
-USER appuser
-
 WORKDIR /var/www/html
 
-RUN python3 -m venv /var/www/html/venv
+COPY .env /var/www/html/.env
+RUN chown root:root /var/www/html/.env && chmod 600 /var/www/html/.env && chmod +r /var/www/html/.env
 
+USER appuser
+
+RUN python3 -m venv /var/www/html/venv
 RUN /var/www/html/venv/bin/pip install --no-cache-dir pandas matplotlib fpdf
 
 COPY composer.json composer.lock /var/www/html/
 RUN composer install --no-dev --optimize-autoloader
 
 COPY . /var/www/html
-
-COPY .env /var/www/html/.env
-
-RUN chown root:root /var/www/html/.env && chmod 600 /var/www/html/.env && chmod +r /var/www/html/.env
 
 EXPOSE 8000
 
