@@ -32,6 +32,10 @@ RUN composer install --no-dev --optimize-autoloader
 
 COPY . /var/www/html
 
+COPY .env /var/www/html/.env
+
+RUN chown root:root /var/www/html/.env && chmod 600 /var/www/html/.env && chmod +r /var/www/html/.env
+
 EXPOSE 8000
 
 CMD ["php", "-S", "0.0.0.0:8000", "index.php"]
