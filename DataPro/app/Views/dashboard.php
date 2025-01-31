@@ -116,10 +116,6 @@
 <body>
     <main class="main-content">
         <div class="left-section">
-            <!-- <video class="dataprogif" autoplay loop muted style="max-width: 100%; height: auto;">
-                <source src="dataprogif.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video> -->
             <h1 style="font-size: 2.5rem; color: #333;">DataPro</h1>
             <p class="description">
                 "Simplify Your Data Journey – From Analysis to Modeling"
