@@ -69,7 +69,7 @@ class Algo
 
                     $subject = 'DataPro : Generated PDF Report';
                     $body = 'Please find the attached PDF report generated from the CSV file.';
-                    $pdf = 'Uploads/' . $basename . '_stats.pdf';
+                    $pdf = '/tmp/' . $basename . '_stats.pdf';
 
                     $result = $mailer->sendEmailWithPDF($USER_DATA['email'], $subject, $body, $pdf);
                     if ($result == 'SUCCESS') {

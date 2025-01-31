@@ -92,7 +92,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     csv_file = sys.argv[1]
-    output_pdf = f"Uploads/{sys.argv[2]}_stats.pdf"
+    output_pdf = f"/tmp/{sys.argv[2]}_stats.pdf"
 
     try:
         data = pd.read_csv(csv_file)
