@@ -21,6 +21,8 @@ RUN useradd -ms /bin/bash appuser
 
 WORKDIR /var/www/html
 
+RUN mkdir -p /var/www/html/Uploads && chown -R www-data:www-data /var/www/html/Uploads && chmod -R 777 /var/www/html/Uploads
+
 USER appuser
 
 RUN python3 -m venv /var/www/html/venv
