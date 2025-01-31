@@ -7,7 +7,7 @@ class Token
 
     private function __construct()
     {
-        $env = '/etc/secrets/.env';
+        $env = parse_ini_file('/etc/secrets/.env');
         $this->_SECRET = $env['SECRET_KEY'];
     }
 

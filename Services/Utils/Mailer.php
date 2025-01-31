@@ -16,7 +16,7 @@ class Mailer
     public function sendEmailWithPDF($to, $subject, $body, $pdfPath)
     {
         try {
-            $env = '/etc/secrets/.env';
+            $env = parse_ini_file('/etc/secrets/.env');
 
             $this->mail->isSMTP();
             $this->mail->Host       = 'smtp.gmail.com';
