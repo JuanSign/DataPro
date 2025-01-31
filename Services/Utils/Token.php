@@ -7,8 +7,7 @@ class Token
 
     private function __construct()
     {
-        $env = parse_ini_file(__DIR__ . '/../.env');
-        $this->_SECRET = $env['SECRET_KEY'];
+        $this->_SECRET = getenv('SECRET_KEY');
     }
 
     public static function Generate(array $payload): string

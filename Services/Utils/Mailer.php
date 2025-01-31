@@ -16,13 +16,11 @@ class Mailer
     public function sendEmailWithPDF($to, $subject, $body, $pdfPath)
     {
         try {
-            $env = parse_ini_file(__DIR__ . '/../.env');
-
             $this->mail->isSMTP();
             $this->mail->Host       = 'smtp.gmail.com';
             $this->mail->SMTPAuth   = true;
-            $this->mail->Username   = $env['MAILER_USERNAME'];
-            $this->mail->Password   = $env['MAILER_PASSWORD'];
+            $this->mail->Username   = getenv('MAILER_USERNAME');
+            $this->mail->Password   = getenv('MAILER_USERNAME');
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $this->mail->Port       = 587;
 

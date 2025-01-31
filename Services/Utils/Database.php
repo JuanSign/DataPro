@@ -13,13 +13,12 @@ class Database
 
     public function __construct()
     {
-        $env = parse_ini_file(__DIR__ . '/../.env');
 
-        $this->_dbHost = $env['DB_HOST'];
-        $this->_dbUser = $env['DB_USER'];
-        $this->_dbPass = $env['DB_PASS'];
-        $this->_dbName = $env['DB_NAME'];
-        $this->_dbPort = $env['DB_PORT'];
+        $this->_dbHost = getenv('DB_HOST');
+        $this->_dbUser = getenv('DB_USER');
+        $this->_dbPass = getenv('DB_PASS');
+        $this->_dbName = getenv('DB_NAME');
+        $this->_dbPort = getenv('DB_PORT');
 
         $this->connect();
     }

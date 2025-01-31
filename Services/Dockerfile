@@ -21,10 +21,6 @@ RUN useradd -ms /bin/bash appuser
 
 WORKDIR /var/www/html
 
-COPY .env /var/www/html/.env
-
-RUN chown -R appuser:appuser /var/www/html && chmod -R 755 /var/www/html && chmod 644 /var/www/html/.env
-
 USER appuser
 
 RUN python3 -m venv /var/www/html/venv
