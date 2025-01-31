@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     default-libmysqlclient-dev \
     curl \
+    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -16,17 +17,20 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN useradd -ms /bin/bash appuser
+
+USER appuser
+
+WORKDIR /var/www/html
+
 RUN python3 -m venv /var/www/html/venv
 
 RUN /var/www/html/venv/bin/pip install --no-cache-dir pandas matplotlib fpdf
 
-WORKDIR /var/www/html
-
 COPY composer.json composer.lock /var/www/html/
 RUN composer install --no-dev --optimize-autoloader
-COPY . /var/www/html
 
-RUN chown -R www-data:www-data /var/www/html/vendor
+COPY . /var/www/html
 
 EXPOSE 8000
 
