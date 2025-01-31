@@ -20,12 +20,12 @@ class Mailer
             $this->mail->Host       = 'smtp.gmail.com';
             $this->mail->SMTPAuth   = true;
             $this->mail->Username   = getenv('MAILER_USERNAME');
-            $this->mail->Password   = getenv('MAILER_USERNAME');
+            $this->mail->Password   = getenv('MAILER_PASSWORD');
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $this->mail->Port       = 587;
 
             //Recipients
-            $this->mail->setFrom('your_email@gmail.com', 'Your Name');
+            $this->mail->setFrom(getenv('MAILER_USERNAME'), 'Juan S. A. Siagian');
             $this->mail->addAddress($to);
 
             // Attach the PDF file
