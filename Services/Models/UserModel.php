@@ -8,23 +8,27 @@ class UserModel
     {
         $DB = Database::getConnection();
 
-        $task = 'SELECT ID, username, email, password FROM users WHERE username = ? OR email = ?';
+        $task = 'SELECT ID, first_name, last_name, username, email, password FROM users WHERE username = ? OR email = ?';
 
         $query = $DB->prepare($task);
         $query->bind_param('ss', $identifier, $identifier);
         $query->execute();
 
         $ID = null;
+        $fname = null;
+        $lname = null;
         $username = null;
         $email = null;
         $password = null;
 
-        $query->bind_result($ID, $username, $email, $password);
+        $query->bind_result($ID, $fname, $lname, $username, $email, $password);
         $query->fetch();
         $query->close();
 
         return [
             'ID' => $ID,
+            'fname' => $fname,
+            'lname' => $lname,
             'username' => $username,
             'email' => $email,
             'password' => $password

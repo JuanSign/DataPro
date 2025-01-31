@@ -32,6 +32,8 @@ class Login
             $data['STATUS'] = 'SUCCESS';
             $data['MESSAGE'] = 'Logged in.';
             $data['TOKEN'] = Token::Generate($credentials);
+            $data['fname'] = $credentials['fname'];
+            $data['lname'] = $credentials['lname'];
             Response::CUSTOM(200, $data);
         }
     }
