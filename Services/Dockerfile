@@ -23,7 +23,7 @@ WORKDIR /var/www/html
 
 COPY .env /var/www/html/.env
 
-RUN chown appuser:appuser /var/www/html/.env && chmod 644 /var/www/html/.env
+RUN chown -R appuser:appuser /var/www/html && chmod -R 755 /var/www/html && chmod 644 /var/www/html/.env
 
 USER appuser
 
