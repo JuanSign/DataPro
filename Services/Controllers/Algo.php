@@ -79,6 +79,8 @@ class Algo
                         Response::INTERNAL_SERVER_ERROR($result);
                         return;
                     }
+                } else {
+                    Response::INTERNAL_SERVER_ERROR($output);
                 }
             }
         }
