@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Processor - DataPro</title>
-    <link rel="stylesheet" href="<?= base_url('/styles/data_processor.css') ?>">
+    <link rel="stylesheet" href='styles/data_processor.css'>
 </head>
 
 <body>

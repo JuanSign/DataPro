@@ -120,7 +120,7 @@
             <p class="description">
                 "Simplify Your Data Journey – From Analysis to Modeling"
             </p>
-            <a href="/data_processor" class="cta-button">Start Processing</a>
+            <a href="<?= base_url('data_processor') ?>" class="cta-button">Start Processing</a>
         </div>
 
         <div class="right-section">

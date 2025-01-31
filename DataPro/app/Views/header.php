@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 <header class="header">
     <?php if (session()->get('token')): ?>
