@@ -35,7 +35,7 @@ class Algo
         // Extract the file key and validate the file
         $file = reset($_FILES);
         if ($file['error'] !== UPLOAD_ERR_OK) {
-            Response::BAD_REQUEST('Error uploading file.');
+            Response::BAD_REQUEST($file['error']);
             return;
         }
         if (pathinfo($file['name'], PATHINFO_EXTENSION) !== 'csv') {
