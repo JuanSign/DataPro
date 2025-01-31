@@ -1,12 +1,14 @@
 <!-- app/Views/data_processor.php -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Processor - DataPro</title>
     <link rel="stylesheet" href="<?= base_url('/styles/data_processor.css') ?>">
 </head>
+
 <body>
     <div class="container">
         <form action="<?= base_url('data-processor/process') ?>" method="POST" enctype="multipart/form-data">
@@ -28,14 +30,14 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <!-- Preview Section (hidden initially) -->
                         <div id="previewSection" class="preview-section hidden">
                             <div class="file-info">
                                 <h3>Uploaded File: <span id="fileName">No file selected</span></h3>
-                                <button type="button" class="btn-change" onclick="resetUpload()">Change File</button>
+                                <button type="button" class="btn-change">Change File</button>
                             </div>
-                            <div class="preview-container">
+                            <div class=" preview-container">
                                 <div class="preview-table">
                                     <!-- Table will be populated via JavaScript -->
                                 </div>
@@ -63,7 +65,7 @@
                                     </label>
                                 </div>
                                 <div class="analysis-card">
-                                    <input type="radio" id="predictive" name="analysisType" value="predictive">
+                                    <input type="radio" id="predictive" name="analysisType" value="predictive" disabled>
                                     <label for="predictive">
                                         <div class="card-icon">🤖</div>
                                         <h3>Predictive Modeling</h3>
@@ -71,7 +73,7 @@
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <!-- Model Options (hidden initially) -->
                             <div id="modelOptions" class="model-options hidden">
                                 <h3>Model Type</h3>
@@ -98,7 +100,7 @@
                                         <label for="registered">Use my registered email</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" id="custom" name="emailChoice" value="custom">
+                                        <input type="radio" id="custom" name="emailChoice" value="custom" disabled>
                                         <label for="custom">Use different email</label>
                                     </div>
                                 </div>
@@ -120,4 +122,5 @@
 
     <script src="<?= base_url('/data_processor.js') ?>"></script>
 </body>
+
 </html>

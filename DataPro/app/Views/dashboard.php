@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .main-content {
             flex: 1;
             display: flex;
@@ -97,6 +99,7 @@
             font-size: 0.9rem;
             line-height: 1.5;
         }
+
         @media (max-width: 1024px) {
             .main-content {
                 flex-direction: column;
@@ -109,6 +112,7 @@
         }
     </style>
 </head>
+
 <body>
     <main class="main-content">
         <div class="left-section">
@@ -162,4 +166,5 @@
         </div>
     </main>
 </body>
+
 </html>

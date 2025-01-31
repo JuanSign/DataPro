@@ -16,22 +16,22 @@ class DataProcessor {
         this.form = document.querySelector('form');
         this.fileInput = document.getElementById('dataFile');
         this.submitBtn = document.querySelector('.btn-submit');
-        
+
         // Sections
         this.uploadSection = document.getElementById('uploadSection');
         this.previewSection = document.getElementById('previewSection');
         this.uploadBox = document.querySelector('.upload-box');
-        
+
         // Analysis options
         this.predictiveRadio = document.getElementById('predictive');
         this.modelOptions = document.getElementById('modelOptions');
         this.analysisError = document.getElementById('analysisError');
-        
+
         // Email options
         this.registeredRadio = document.getElementById('registered');
         this.customRadio = document.getElementById('custom');
         this.customEmailInput = document.getElementById('customEmailInput');
-        
+
         // Preview elements
         this.fileNameElement = document.getElementById('fileName');
         this.previewTable = document.querySelector('.preview-table');
@@ -40,27 +40,27 @@ class DataProcessor {
     initializeEventListeners() {
         // File handling
         this.fileInput.addEventListener('change', this.handleFileUpload.bind(this));
-        
+
         // Drag and drop
         this.uploadBox.addEventListener('dragover', this.handleDragOver.bind(this));
         this.uploadBox.addEventListener('dragleave', this.handleDragLeave.bind(this));
         this.uploadBox.addEventListener('drop', this.handleDrop.bind(this));
-        
+
         // Analysis type
         this.predictiveRadio.addEventListener('change', () => {
             this.toggleModelOptions();
             this.validateForm();
         });
-        
+
         // Email choice
         this.customRadio.addEventListener('change', () => {
             this.toggleCustomEmail();
             this.validateForm();
         });
-        
+
         // Form submission
         this.form.addEventListener('submit', this.handleSubmit.bind(this));
-        
+
         // Reset button
         const resetBtn = document.querySelector('.btn-change');
         if (resetBtn) {
@@ -81,7 +81,7 @@ class DataProcessor {
     handleDrop(e) {
         e.preventDefault();
         this.uploadBox.style.borderColor = '#ddd';
-        
+
         const files = e.dataTransfer.files;
         if (files.length) {
             this.fileInput.files = files;
@@ -144,11 +144,11 @@ class DataProcessor {
         const headers = rows[0].split(',').map(header => header.trim());
         let tableHTML = this.generateTableHeader(headers);
         tableHTML += this.generateTableBody(rows.slice(1, 6), headers.length);
-        
+
         this.previewTable.innerHTML = tableHTML;
 
         // Check for 'label' column if predictive modeling is selected
-        const hasLabelColumn = headers.some(header => 
+        const hasLabelColumn = headers.some(header =>
             header.toLowerCase() === 'label'
         );
         this.analysisError.classList.toggle('hidden', hasLabelColumn || !this.predictiveRadio.checked);
@@ -171,8 +171,8 @@ class DataProcessor {
                     ${rows.map(row => `
                         <tr>
                             ${row.split(',', columnCount)
-                                .map(cell => `<td class="p-2 border">${cell.trim()}</td>`)
-                                .join('')}
+                .map(cell => `<td class="p-2 border">${cell.trim()}</td>`)
+                .join('')}
                         </tr>
                     `).join('')}
                 </tbody>
@@ -216,11 +216,29 @@ class DataProcessor {
         e.preventDefault();
         if (!this.validateForm()) return;
 
-        // Here you would typically send the data to your server
         const formData = new FormData(this.form);
-        console.log('Form submitted successfully', Object.fromEntries(formData));
-        
-        // TODO: Add your form submission logic here
+        const requestBody = new FormData();
+
+        requestBody.append('file', formData.get('dataFile'));
+        if (formData.get('analysisType') == 'statistical')
+            requestBody.append('type', 'stats');
+
+        console.log("PROCESSING");
+        fetch('/upload-file', {
+            method: 'POST',
+            body: requestBody,
+        })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log("Response from PHP controller:", data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+
     }
 }
 
