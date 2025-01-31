@@ -22,7 +22,8 @@ RUN useradd -ms /bin/bash appuser
 WORKDIR /var/www/html
 
 COPY .env /var/www/html/.env
-RUN chown root:root /var/www/html/.env && chmod 600 /var/www/html/.env && chmod +r /var/www/html/.env
+
+RUN chown appuser:appuser /var/www/html/.env && chmod 644 /var/www/html/.env
 
 USER appuser
 
