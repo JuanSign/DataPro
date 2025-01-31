@@ -13,7 +13,7 @@ class Database
 
     public function __construct()
     {
-        $env = parse_ini_file(__DIR__ . '/../.env');
+        $env = '/etc/secrets/.env';
 
         $this->_dbHost = $env['DB_HOST'];
         $this->_dbUser = $env['DB_USER'];
