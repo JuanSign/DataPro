@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="loading" class="loading-spinner" style="display: none;"></div>
+    <div id="content" class="container">
         <form action="<?= base_url('data-processor/process') ?>" method="POST" enctype="multipart/form-data">
             <div class="split-layout">
                 <!-- Left Section -->

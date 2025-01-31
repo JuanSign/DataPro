@@ -34,12 +34,13 @@ class FileController extends BaseController
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 
         $response = curl_exec($ch);
+        $data = json_decode($response, true);
+
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        if (curl_errno($ch) || $httpCode != 200) {
-            $errorMessage = curl_error($ch);
+        if ($httpCode != 200) {
             curl_close($ch);
-            return $this->response->setJSON(['error' => 'Failed to upload file: ' . $errorMessage]);
+            return $this->response->setJSON(['error' => 'Failed to upload file: ' . $data['MESSAGE']]);
         }
 
         curl_close($ch);

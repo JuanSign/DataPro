@@ -224,6 +224,11 @@ class DataProcessor {
             requestBody.append('type', 'stats');
 
         console.log("PROCESSING");
+
+        document.getElementById('loading').style.display = 'block';
+
+        document.getElementById('content').style.display = 'none';
+
         fetch('/upload-file', {
             method: 'POST',
             body: requestBody,
@@ -234,15 +239,27 @@ class DataProcessor {
             })
             .then(data => {
                 console.log("Response from PHP controller:", data);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+                this.resetUpload();
+                alert("Upload successful!");
             })
             .catch(error => {
                 console.error("Error:", error);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+                this.resetUpload();
+                alert("An error occurred during the upload.");
             });
+
 
     }
 }
 
-// Initialize the processor when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new DataProcessor();
 });
