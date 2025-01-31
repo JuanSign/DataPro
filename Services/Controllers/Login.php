@@ -34,6 +34,7 @@ class Login
             $data['TOKEN'] = Token::Generate($credentials);
             $data['fname'] = $credentials['fname'];
             $data['lname'] = $credentials['lname'];
+            $data['email'] = $credentials['email'];
             Response::CUSTOM(200, $data);
         }
     }
