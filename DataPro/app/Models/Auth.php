@@ -28,14 +28,17 @@ class Auth extends Model
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $response = curl_exec($ch);
-        $response_json = json_encode($response);
-        $response_json = str_replace(["\n", "\r", "\t"], '', $response_json);
 
         if ($response === false) {
-            echo "<script>console.log('Curl Error: $ch');</script>";
+            $error = curl_error($ch);
+            echo "<script>console.log('Curl Error: $error');</script>";
         } else {
-            echo "<script>console.log('API response: $response');</script>";
+            $response_json = json_encode($response);
+            $response_json = str_replace(["\n", "\r", "\t"], '', $response_json);
+
+            echo "<script>console.log('API response: $response_json');</script>";
         }
+
 
         $decoded_response = json_decode($response, true);
         if (empty($decoded_response)) {
