@@ -223,7 +223,6 @@ class DataProcessor {
         if (formData.get('analysisType') == 'statistical')
             requestBody.append('type', 'stats');
 
-        console.log("PROCESSING");
 
         document.getElementById('loading').style.display = 'block';
 
@@ -234,11 +233,9 @@ class DataProcessor {
             body: requestBody,
         })
             .then(response => {
-                console.log('Response status:', response.status);
                 return response.json();
             })
             .then(data => {
-                console.log("Response from PHP controller:", data);
 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
@@ -247,8 +244,6 @@ class DataProcessor {
                 alert("Upload successful!");
             })
             .catch(error => {
-                console.error("Error:", error);
-
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
 
