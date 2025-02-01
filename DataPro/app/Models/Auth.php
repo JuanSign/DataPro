@@ -8,7 +8,7 @@ class Auth extends Model
 {
     public function Login($username, $password)
     {
-        echo "<script>console.log('PHP Message: Login $username');</script>";
+        log_message('info', 'Login attempt for user: ' . $username);
 
         $url = "https://datapro-services.onrender.com/login";
         $data = [
@@ -30,19 +30,14 @@ class Auth extends Model
         $response = curl_exec($ch);
 
         if ($response === false) {
-            $error = curl_error($ch);
-            echo "<script>console.log('Curl Error: " . addslashes($error) . "');</script>";
+            log_message('error', 'Curl error: ' . curl_error($ch));
         } else {
-            $response_json = json_encode($response);
-            $response_json = str_replace(["\n", "\r", "\t"], '', $response_json);
-            echo "<script>console.log('API response: " . addslashes($response_json) . "');</script>";
+            log_message('info', 'Response from login API: ' . $response);
         }
-
-
 
         $decoded_response = json_decode($response, true);
         if (empty($decoded_response)) {
-            echo "<script>console.log('Invalid response from login API');</script>";
+            log_message('error', 'Empty response or invalid JSON received from login API.');
         }
 
         return $decoded_response;
@@ -50,7 +45,7 @@ class Auth extends Model
 
     public function Register($fname, $lname, $username, $email, $password)
     {
-        echo "<script>console.log('PHP Message: Register $username');</script>";
+        log_message('info', 'Registration attempt for user: ' . $username);
 
         $url = "https://datapro-services.onrender.com/register";
         $data = [
@@ -75,14 +70,14 @@ class Auth extends Model
         $response = curl_exec($ch);
 
         if ($response === false) {
-            echo "<script>console.log('Curl Error: $ch');</script>";
+            log_message('error', 'Curl error: ' . curl_error($ch));
         } else {
-            echo "<script>console.log('API response: $response');</script>";
+            log_message('info', 'Response from register API: ' . $response);
         }
 
         $decoded_response = json_decode($response, true);
         if (empty($decoded_response)) {
-            echo "<script>console.log('Invalid response from login API');</script>";
+            log_message('error', 'Empty response or invalid JSON received from register API.');
         }
 
         return $decoded_response;
