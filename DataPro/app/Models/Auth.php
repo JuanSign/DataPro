@@ -29,20 +29,18 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        echo $response;
+        if ($response === false) {
+            log_message('error', 'Curl error: ' . curl_error($ch));
+        } else {
+            log_message('info', 'Response from login API: ' . $response);
+        }
 
-        // if ($response === false) {
-        //     log_message('error', 'Curl error: ' . curl_error($ch));
-        // } else {
-        //     log_message('info', 'Response from login API: ' . $response);
-        // }
+        $decoded_response = json_decode($response, true);
+        if (empty($decoded_response)) {
+            log_message('error', 'Empty response or invalid JSON received from login API.');
+        }
 
-        // $decoded_response = json_decode($response, true);
-        // if (empty($decoded_response)) {
-        //     log_message('error', 'Empty response or invalid JSON received from login API.');
-        // }
-
-        // return $decoded_response;
+        return $decoded_response;
     }
 
     public function Register($fname, $lname, $username, $email, $password)
@@ -71,19 +69,17 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        echo $response;
+        if ($response === false) {
+            log_message('error', 'Curl error: ' . curl_error($ch));
+        } else {
+            log_message('info', 'Response from register API: ' . $response);
+        }
 
-        // if ($response === false) {
-        //     log_message('error', 'Curl error: ' . curl_error($ch));
-        // } else {
-        //     log_message('info', 'Response from register API: ' . $response);
-        // }
+        $decoded_response = json_decode($response, true);
+        if (empty($decoded_response)) {
+            log_message('error', 'Empty response or invalid JSON received from register API.');
+        }
 
-        // $decoded_response = json_decode($response, true);
-        // if (empty($decoded_response)) {
-        //     log_message('error', 'Empty response or invalid JSON received from register API.');
-        // }
-
-        // return $decoded_response;
+        return $decoded_response;
     }
 }

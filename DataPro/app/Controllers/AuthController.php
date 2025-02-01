@@ -23,9 +23,9 @@ class AuthController extends BaseController
             session()->set('token', $response['TOKEN']);
             session()->set('fname', $response['fname']);
             session()->set('lname', $response['lname']);
-            // return redirect()->to('/');
+            return redirect()->to('/');
         } else {
-            // return redirect()->to('/authentication');
+            return redirect()->to('/authentication');
         }
     }
 
@@ -42,9 +42,9 @@ class AuthController extends BaseController
         $response = $model->Register($fname, $lname, $username, $email, $password);
 
         if ($response['STATUS'] == 'SUCCESS') {
-            // return redirect()->to('/authentication');
+            return redirect()->to('/authentication');
         } else {
-            // return redirect()->to('/authentication');
+            return redirect()->to('/authentication');
         }
     }
 
