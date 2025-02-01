@@ -1,22 +1,23 @@
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev zip git && \
+    libpng-dev libjpeg-dev libfreetype6-dev \
+    libicu-dev zip git && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd pdo pdo_mysql
+    docker-php-ext-install gd pdo pdo_mysql intl
 
 RUN a2enmod rewrite
 
-COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
-
 WORKDIR /var/www/html
 
-COPY . /var/www/html/
+COPY . .
 
-RUN chown -R www-data:www-data /var/www/html \
+RUN mkdir -p writable \
+    && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
-    && chmod -R 777 /var/www/html/writable
+    && chmod -R 777 writable
 
+RUN echo "ServerName datapro-ij23.onrender.com" >> /etc/apache2/apache2.conf
 
 EXPOSE 80
 
