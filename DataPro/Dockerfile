@@ -6,11 +6,17 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
 
 RUN a2enmod rewrite
 
+RUN echo "ServerName datapro-ij23.onrender.com" >> /etc/apache2/apache2.conf
+
+RUN echo "DirectoryIndex index.php index.html" > /etc/apache2/mods-enabled/dir.conf
+
 WORKDIR /var/www/html
 
 COPY . /var/www/html/
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html \
+    && chmod -R 777 /var/www/html/writable
 
 EXPOSE 80
 
