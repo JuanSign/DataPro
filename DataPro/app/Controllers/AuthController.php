@@ -18,15 +18,16 @@ class AuthController extends BaseController
         $password = $this->request->getPost('password');
 
         $response = $model->Login($username, $password);
+        echo "<script>console.log('Login response: " . json_encode($response) . "');</script>";
 
-        if ($response['STATUS'] == 'SUCCESS') {
-            session()->set('token', $response['TOKEN']);
-            session()->set('fname', $response['fname']);
-            session()->set('lname', $response['lname']);
-            return redirect()->to('/');
-        } else {
-            return redirect()->to('/authentication');
-        }
+        // if ($response['STATUS'] == 'SUCCESS') {
+        //     session()->set('token', $response['TOKEN']);
+        //     session()->set('fname', $response['fname']);
+        //     session()->set('lname', $response['lname']);
+        //     return redirect()->to('/');
+        // } else {
+        //     return redirect()->to('/authentication');
+        // }
     }
 
     public function register_action()
