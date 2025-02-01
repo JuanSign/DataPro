@@ -36,17 +36,15 @@ class FileController extends BaseController
         $response = curl_exec($ch);
         $data = json_decode($response, true);
 
-        return $this->response->setJSON(['msg' => $response]);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        // $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($httpCode != 200) {
+            curl_close($ch);
+            return $this->response->setJSON(['error' => 'Failed to upload file: ' . $data['MESSAGE']]);
+        }
 
-        // if ($httpCode != 200) {
-        //     curl_close($ch);
-        //     return $this->response->setJSON(['error' => 'Failed to upload file: ' . $data['MESSAGE']]);
-        // }
+        curl_close($ch);
 
-        // curl_close($ch);
-
-        // return $this->response->setJSON(['type' => $type, 'filename' => $file->getName(), 'api_response' => json_decode($response)]);
+        return $this->response->setJSON(['type' => $type, 'filename' => $file->getName(), 'api_response' => json_decode($response)]);
     }
 }
