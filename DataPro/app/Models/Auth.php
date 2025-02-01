@@ -8,9 +8,9 @@ class Auth extends Model
 {
     public function Login($username, $password)
     {
+        log_message('info', 'Login attempt for user: ' . $username);
 
         $url = "https://datapro-services.onrender.com/login";
-
         $data = [
             'identifier' => $username,
             'password' => $password,
@@ -29,14 +29,25 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        return json_decode($response, true);
+        if ($response === false) {
+            log_message('error', 'Curl error: ' . curl_error($ch));
+        } else {
+            log_message('info', 'Response from login API: ' . $response);
+        }
+
+        $decoded_response = json_decode($response, true);
+        if (empty($decoded_response)) {
+            log_message('error', 'Empty response or invalid JSON received from login API.');
+        }
+
+        return $decoded_response;
     }
 
     public function Register($fname, $lname, $username, $email, $password)
     {
+        log_message('info', 'Registration attempt for user: ' . $username);
 
         $url = "https://datapro-services.onrender.com/register";
-
         $data = [
             "first_name" => $fname,
             "last_name" => $lname,
@@ -58,6 +69,17 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        return json_decode($response, true);
+        if ($response === false) {
+            log_message('error', 'Curl error: ' . curl_error($ch));
+        } else {
+            log_message('info', 'Response from register API: ' . $response);
+        }
+
+        $decoded_response = json_decode($response, true);
+        if (empty($decoded_response)) {
+            log_message('error', 'Empty response or invalid JSON received from register API.');
+        }
+
+        return $decoded_response;
     }
 }
