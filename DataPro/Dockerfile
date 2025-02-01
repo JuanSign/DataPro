@@ -14,7 +14,7 @@ COPY . .
 
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN a2ensite 000-default.conf && service apache2 restart
+RUN a2ensite 000-default.conf 
 
 RUN echo "ServerName datapro-ij23.onrender.com" >> /etc/apache2/apache2.conf
 
