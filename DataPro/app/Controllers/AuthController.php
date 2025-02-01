@@ -19,8 +19,6 @@ class AuthController extends BaseController
 
         $response = $model->Login($username, $password);
 
-        echo $response;
-
         // if ($response['STATUS'] == 'SUCCESS') {
         //     session()->set('token', $response['TOKEN']);
         //     session()->set('fname', $response['fname']);
@@ -42,8 +40,6 @@ class AuthController extends BaseController
         $password = $this->request->getPost('password');
 
         $response = $model->Register($fname, $lname, $username, $email, $password);
-
-        echo $response;
 
         // if ($response['STATUS'] == 'SUCCESS') {
         //     return redirect()->to('/authentication');

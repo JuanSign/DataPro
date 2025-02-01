@@ -29,18 +29,20 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        if ($response === false) {
-            log_message('error', 'Curl error: ' . curl_error($ch));
-        } else {
-            log_message('info', 'Response from login API: ' . $response);
-        }
+        echo $response;
 
-        $decoded_response = json_decode($response, true);
-        if (empty($decoded_response)) {
-            log_message('error', 'Empty response or invalid JSON received from login API.');
-        }
+        // if ($response === false) {
+        //     log_message('error', 'Curl error: ' . curl_error($ch));
+        // } else {
+        //     log_message('info', 'Response from login API: ' . $response);
+        // }
 
-        return $decoded_response;
+        // $decoded_response = json_decode($response, true);
+        // if (empty($decoded_response)) {
+        //     log_message('error', 'Empty response or invalid JSON received from login API.');
+        // }
+
+        // return $decoded_response;
     }
 
     public function Register($fname, $lname, $username, $email, $password)
@@ -69,17 +71,19 @@ class Auth extends Model
 
         $response = curl_exec($ch);
 
-        if ($response === false) {
-            log_message('error', 'Curl error: ' . curl_error($ch));
-        } else {
-            log_message('info', 'Response from register API: ' . $response);
-        }
+        echo $response;
 
-        $decoded_response = json_decode($response, true);
-        if (empty($decoded_response)) {
-            log_message('error', 'Empty response or invalid JSON received from register API.');
-        }
+        // if ($response === false) {
+        //     log_message('error', 'Curl error: ' . curl_error($ch));
+        // } else {
+        //     log_message('info', 'Response from register API: ' . $response);
+        // }
 
-        return $decoded_response;
+        // $decoded_response = json_decode($response, true);
+        // if (empty($decoded_response)) {
+        //     log_message('error', 'Empty response or invalid JSON received from register API.');
+        // }
+
+        // return $decoded_response;
     }
 }
