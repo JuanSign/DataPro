@@ -12,12 +12,16 @@ WORKDIR /var/www/html
 
 COPY . .
 
+COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2ensite 000-default.conf && service apache2 restart
+
+RUN echo "ServerName datapro-ij23.onrender.com" >> /etc/apache2/apache2.conf
+
 RUN mkdir -p writable \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 777 writable
-
-RUN echo "ServerName datapro-ij23.onrender.com" >> /etc/apache2/apache2.conf
 
 EXPOSE 80
 
