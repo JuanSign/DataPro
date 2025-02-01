@@ -28,6 +28,8 @@ class Auth extends Model
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $response = curl_exec($ch);
+        $response_json = json_encode($response);
+        $response_json = str_replace(["\n", "\r", "\t"], '', $response_json);
 
         if ($response === false) {
             echo "<script>console.log('Curl Error: $ch');</script>";
