@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
-
-class Auth extends Model
+class Auth
 {
     public function Login($username, $password)
     {
