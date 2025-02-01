@@ -31,13 +31,13 @@ class Auth extends Model
 
         if ($response === false) {
             $error = curl_error($ch);
-            echo "<script>console.log('Curl Error: $error');</script>";
+            echo "<script>console.log('Curl Error: " . addslashes($error) . "');</script>";
         } else {
             $response_json = json_encode($response);
             $response_json = str_replace(["\n", "\r", "\t"], '', $response_json);
-
-            echo "<script>console.log('API response: $response_json');</script>";
+            echo "<script>console.log('API response: " . addslashes($response_json) . "');</script>";
         }
+
 
 
         $decoded_response = json_decode($response, true);
