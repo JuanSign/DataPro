@@ -36,7 +36,7 @@ class FileController extends BaseController
         $response = curl_exec($ch);
         $data = json_decode($response, true);
 
-        $this->response->setJSON(['msg' => $response]);
+        return $this->response->setJSON(['msg' => $response]);
 
         // $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
